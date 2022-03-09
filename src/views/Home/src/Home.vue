@@ -10,7 +10,11 @@
       </div>
       <div class="wrapper">
         <div class="main-page">
-          <router-view />
+          <el-row>
+            <el-col :span="24">
+              <router-view />
+            </el-col>
+          </el-row>
         </div>
       </div>
     </div>
@@ -54,6 +58,7 @@ import NavMenu from "@/components/NavMenu";
         background-color: #fff;
         background-image: url("@/assets/images/login-bg.svg");
         height: 100%;
+        padding: 40px;
       }
     }
   }

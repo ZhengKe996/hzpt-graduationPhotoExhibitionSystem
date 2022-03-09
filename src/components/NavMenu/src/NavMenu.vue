@@ -20,11 +20,11 @@
         <el-icon></el-icon>
         <span>学院信息</span>
       </el-menu-item>
-      <el-menu-item index="/subject">
+      <el-menu-item index="/marjor">
         <el-icon></el-icon>
         <span>专业信息</span>
       </el-menu-item>
-      <el-menu-item index="/infomessage">
+      <el-menu-item index="/infomation">
         <el-icon></el-icon>
         <span>毕业照信息</span>
       </el-menu-item>

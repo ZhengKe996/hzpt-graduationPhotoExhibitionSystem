@@ -18,6 +18,7 @@
   align-items: center;
   height: 100%;
   background-color: #fff;
+  margin-top: 6%;
   .content {
     position: relative;
     bottom: 40px;

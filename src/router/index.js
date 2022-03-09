@@ -27,20 +27,20 @@ const routes = [
         component: () => import("@/views/College"),
       },
       {
-        name: "subject",
-        path: "/subject",
+        name: "marjor",
+        path: "/marjor",
         meta: {
           title: "专业信息",
         },
-        component: () => import("@/views/Subject"),
+        component: () => import("@/views/Marjor"),
       },
       {
-        name: "infomessage",
-        path: "/infomessage",
+        name: "infomation",
+        path: "/infomation",
         meta: {
           title: "毕业照信息",
         },
-        component: () => import("@/views/InfoMessage"),
+        component: () => import("@/views/Infomation"),
       },
     ],
   },

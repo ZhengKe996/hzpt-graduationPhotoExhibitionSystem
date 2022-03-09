@@ -11,49 +11,50 @@
         </div>
       </slot>
     </div>
+    <el-row>
+      <el-col :span="24">
+        <el-table
+          :data="props.tableData"
+          border
+          size="small"
+          style="width: 100%"
+          :highlight-current-row="true"
+          stripe
+        >
+          <el-table-column type="selection" align="center" />
 
-    <el-table
-      :data="props.tableData"
-      border
-      size="small"
-      style="width: 100%"
-      :highlight-current-row="true"
-      stripe
-    >
-      <el-table-column type="selection" align="center" width="80" />
-      <el-table-column
-        prop="id"
-        type="index"
-        align="center"
-        label="序号"
-        width="100"
-      />
-      <el-table-column
-        prop="college"
-        align="center"
-        label="学院名"
-        width="400"
-      />
-      <el-table-column type="index" width="240" align="center" fixed="right">
-        <template #default="scope">
-          <div class="handle-btns">
-            <el-button
-              size="mini"
-              type="text"
-              @click="handleEditClick(scope.row)"
-              >编辑</el-button
-            >
-            <el-button
-              size="mini"
-              type="text"
-              class="handle-btn"
-              @click="handleDeleteClick(scope.row)"
-              >删除</el-button
-            >
-          </div>
-        </template>
-      </el-table-column>
-    </el-table>
+          <el-table-column
+            prop="id"
+            type="index"
+            align="center"
+            label="序号"
+            width="80"
+          />
+
+          <el-table-column prop="college" align="center" label="学院名" />
+
+          <el-table-column type="index" align="center" width="240">
+            <template #default="scope">
+              <div class="handle-btns">
+                <el-button
+                  size="mini"
+                  type="text"
+                  @click="handleEditClick(scope.row)"
+                  >编辑</el-button
+                >
+                <el-button
+                  size="mini"
+                  type="text"
+                  class="handle-btn"
+                  @click="handleDeleteClick(scope.row)"
+                  >删除</el-button
+                >
+              </div>
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-col>
+    </el-row>
   </div>
 </template>
 <script setup>
@@ -83,27 +84,31 @@ const handleEditClick = (item) => {
 </script>
 
 <style lang="scss" scoped>
-.header {
-  display: flex;
-  height: 45px;
-  padding: 0 5px;
-  justify-content: space-between;
-  align-items: center;
-
-  .title {
-    font-size: 28px;
-    font-weight: 700;
-  }
-
-  .handler {
+.own-table {
+  width: 90%;
+  height: 80vh;
+  .header {
+    display: flex;
+    height: 45px;
+    padding: 0 5px;
+    justify-content: space-between;
     align-items: center;
+
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .handler {
+      align-items: center;
+    }
   }
-}
-.handle-btns {
-  display: flex;
-  justify-content: center;
-  .handle-btn {
-    color: red;
+  .handle-btns {
+    display: flex;
+    justify-content: center;
+    .handle-btn {
+      color: red;
+    }
   }
 }
 </style>

@@ -12,6 +12,7 @@
       >
         <el-input :disabled="true" v-model="props.form.id"></el-input>
       </el-form-item>
+
       <el-form-item label="所属学院">
         <el-select
           v-model="props.form.cid"
@@ -24,13 +25,12 @@
             :key="item.id"
             :label="item.college"
             :value="item.id"
-          >
-          </el-option>
+          />
         </el-select>
       </el-form-item>
 
       <el-form-item label="专业名">
-        <el-input v-model="props.form.subject"></el-input>
+        <el-input v-model="props.form.marjor"></el-input>
       </el-form-item>
 
       <el-form-item>

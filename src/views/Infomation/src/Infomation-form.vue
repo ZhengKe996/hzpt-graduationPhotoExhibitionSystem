@@ -41,23 +41,27 @@
 
       <el-form-item label="所属专业">
         <el-select
-          v-model="props.form.sid"
+          v-model="props.form.mid"
           class="m-2"
           placeholder="请选择专业"
           size="large"
         >
           <el-option
-            v-for="item in props.subjectlist"
+            v-for="item in props.marjorlist"
             :key="item.id"
-            :label="item.subject"
+            :label="item.marjor"
             :value="item.id"
           >
           </el-option>
         </el-select>
       </el-form-item>
+      <el-form-item label="班级名">
+        <el-input v-model="props.form.cname"></el-input>
+      </el-form-item>
 
       <el-form-item label="上传毕业照">
         <el-upload
+          ref="uploadRef"
           class="upload-demo"
           :action="uploadUrl"
           method="post"
@@ -79,7 +83,7 @@
 </template>
 
 <script setup>
-import { defineProps, defineEmit } from "vue";
+import { defineProps, defineEmit, ref, getCurrentInstance } from "vue";
 import Notification from "@/base-ui/Notification";
 import { upload } from "@/config";
 const props = defineProps({
@@ -87,24 +91,33 @@ const props = defineProps({
   dialogVisible: Boolean,
   title: String,
   collegelist: Array,
-  subjectlist: Array,
+  marjorlist: Array,
 });
-const uploadUrl = upload;
 
+const uploadUrl = upload;
+const uploadRef = ref();
+const internalInstance = getCurrentInstance();
 const emit = defineEmit([
   "handleClose",
   "handleConfirm",
   "handleCancel",
   "handleCollegeChange",
 ]);
+const clearFiles = () => {
+  internalInstance.ctx.$refs.uploadRef.clearFiles();
+};
+
 const handleClose = () => {
   emit("handleClose");
+  clearFiles();
 };
 const handleConfirm = () => {
   emit("handleConfirm");
+  clearFiles();
 };
 const handleCancel = () => {
   emit("handleCancel");
+  clearFiles();
 };
 
 const handleCollegeChange = (value) => {
@@ -120,5 +133,6 @@ const handleSuccess = (response) => {
   } else {
     Notification.Error("上传毕业照", response.message);
   }
+  // console.log(internalInstance.ctx.$refs.uploadRef.uploadFiles[0]);
 };
 </script>
